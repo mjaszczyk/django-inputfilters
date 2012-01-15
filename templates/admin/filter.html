@@ -1,0 +1,14 @@
+{% load i18n %}
+
+{% if spec.is_search_filter %}
+    <h3>{{ title }}</h3>
+    {% include spec.form_template with form=spec.form action=spec.form_action only %}
+{% else %}
+    <h3>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h3>
+    <ul>
+    {% for choice in choices %}
+        <li{% if choice.selected %} class="selected"{% endif %}>
+        <a href="{{ choice.query_string|iriencode }}">{{ choice.display }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}

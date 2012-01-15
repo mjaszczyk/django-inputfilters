@@ -1,0 +1,10 @@
+/.Python
+/.env
+/act.sh
+/src
+*.pyc
+/.project
+/.pydevproject
+/.settings
+.sass-cache
+/*.nja
