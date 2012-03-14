@@ -1,8 +1,10 @@
 <form method="get" action="{{ action }}">
+    {% block before_form %}{% endblock %}
     <ul>
         {{ form.as_ul }}
         <li>
             <input type="submit" value="filter" />
         </li>
     </ul>
+    {% block after_form %}{% endblock %}
 </form>

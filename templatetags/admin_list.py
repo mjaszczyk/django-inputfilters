@@ -3,8 +3,9 @@ from django.contrib.admin.templatetags.admin_list import register as parent_regi
 
 register = deepcopy(parent_register)
 
-@register.inclusion_tag('admin/filter.html')
-def admin_list_filter(cl, spec):
+@register.inclusion_tag('admin/filter.html', takes_context=True)
+def admin_list_filter(context, cl, spec):
     # Append change list params to spec object
     spec.params = cl.params
-    return {'title': spec.title, 'choices' : list(spec.choices(cl)), 'spec': spec}
+    context.update({'title': spec.title, 'choices' : list(spec.choices(cl)), 'spec': spec})
+    return context
